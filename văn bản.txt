@@ -12,7 +12,7 @@ local Window = Fluent:CreateWindow({
     TabWidth = 180,
     Acrylic = false,
     Theme = "Dark",
-    Search = true,
+    Search = false,
     MinimizeKey = Enum.KeyCode.LeftControl, 
 
     UserInfo = false,
