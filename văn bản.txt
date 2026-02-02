@@ -1,0 +1,23 @@
+local Fluent = loadstring(game:HttpGet("https://raw.githubusercontent.com/discoart/FluentPlus/refs/heads/main/release.lua"))()
+local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
+local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
+-- local window fluent
+local Window = Fluent:CreateWindow({
+    Title = "Maru hub prenium",
+    SubTitle = " by timinied",
+    TitleIcon = "rbxassetid://129490232946325", 
+    Image = "rbxassetid://129490232946325", 
+    DropdownsOutsideWindow = true,
+    Size = UDim2.fromOffset(500, 350),
+    TabWidth = 180,
+    Acrylic = false,
+    Theme = "Dark",
+    Search = true,
+    MinimizeKey = Enum.KeyCode.LeftControl, 
+
+    UserInfo = false,
+    UserInfoTop = true,
+    UserInfoTitle = game:GetService("Players").LocalPlayer.DisplayName,
+    UserInfoSubtitle = "User",
+    UserInfoSubtitleColor = Color3.fromRGB(255, 255, 255)
+})
