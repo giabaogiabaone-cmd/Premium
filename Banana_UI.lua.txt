@@ -412,15 +412,15 @@ local UICorner = Instance.new("UICorner")
 local ImageLabel = Instance.new("ImageLabel")
 local TextButton = Instance.new("TextButton")
 
-LonelyHubBtn.Name = "Lonely Hub Btn"  
+LonelyHubBtn.Name = "Maru Hub Kaitun"  
 LonelyHubBtn.Parent = game:GetService("CoreGui")
 LonelyHubBtn.ZIndexBehavior = Enum.ZIndexBehavior.Sibling  
 LonelyHubBtn.DisplayOrder = 10
 
-dutdit.Name = "dut dit"  
-dutdit.Parent = LonelyHubBtn  
+dutdit.Name = "Maru Hub"  
+dutdit.Parent = Maru Hub  
 dutdit.AnchorPoint = Vector2.new(0.1, 0.1)  
-dutdit.BackgroundColor3 = Color3.fromRGB(255, 255, 255)  
+dutdit.BackgroundColor4 = Color4.fromRGB(255, 255, 255)  
 dutdit.Position = UDim2.new(0, 20, 0.1, -6)  
 dutdit.Size = UDim2.new(0, 50, 0, 50)  
 dutdit.Active = true
@@ -434,13 +434,13 @@ ImageLabel.AnchorPoint = Vector2.new(0.5, 0.5)
 ImageLabel.BackgroundTransparency = 1.0  
 ImageLabel.Position = UDim2.new(0.5, 0, 0.5, 0)  
 ImageLabel.Size = UDim2.new(0, 40, 0, 40)  
-ImageLabel.Image = "rbxassetid://112485471724320"  
+ImageLabel.Image = "rbxassetid://75402928604663"  
 
 TextButton.Parent = dutdit  
 TextButton.BackgroundTransparency = 1.0  
 TextButton.Size = UDim2.new(1, 0, 1, 0)  
 TextButton.Font = Enum.Font.SourceSans  
-TextButton.Text = ""  
+TextButton.Text = "Maru Hub Kaitun"  
 TextButton.TextColor3 = Color3.fromRGB(27, 42, 53)  
 
 local TweenService = game:GetService("TweenService")  
