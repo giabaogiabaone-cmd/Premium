@@ -1,591 +1,655 @@
--- source shared by araujozwx 
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/LongHip12/LonelyLib/refs/heads/main/main.lua"))()
 
-if getgenv().Nousigi then 
-	if game.CoreGui:FindFirstChild("Night Mystic GUI") then
-		for i, v in ipairs(game.CoreGui:GetChildren()) do
-			if string.find(v.Name,  "Night Mystic") then
-				v:Destroy()
-			end
-		end
-	end
-end
-getgenv().Nousigi = true
+Library:CreateTheme({
+    ["Name"] = "Test",
+	["Border Color"] = Color3.fromRGB(255, 214, 94),
+    ["Button Background Color"] = Library:Gradient({
+        ["0"] =   { Color = Color3.fromRGB(255, 241, 196),   Transparency = 0 },    -- 1 0.945098 0.768627 = 255,241,196
+        ["65"] =  { Color = Color3.fromRGB(255, 219, 120),   Transparency = 0 },    -- 1 0.858824 0.470588 = 255,219,120
+        ["100"] = { Color = Color3.fromRGB(255, 198, 92),    Transparency = 0 },     -- 1 0.776471 0.360784 = 255,198,92
+    }, {
+        Rotation = 0,
+    }),
+	["Click Effect Color"] = Color3.fromRGB(230, 230, 230),
+	["Setting Icon Color"] = Color3.fromRGB(230, 230, 230),
+	["Logo Image"] = "rbxassetid://112485471724320",
+	["Search Icon Color"] = Color3.fromRGB(240, 240, 230),
+	["Search Icon Highlight Color"] = Color3.fromRGB(255, 214, 94),
+	["GUI Text Color"] = Color3.fromRGB(235, 235, 230),
+	["Text Color"] = Color3.fromRGB(235, 235, 230),
+	["Placeholder Text Color"] = Color3.fromRGB(170, 170, 160),
+	["Title Text Color"] = Color3.fromRGB(255, 214, 94),
+	["Background Main Color"] = Color3.fromRGB(18, 18, 22),
+	["Background 1 Color"] = Color3.fromRGB(28, 28, 34),
+	["Background 1 Transparency"] = 0.1,
+	["Background 2 Color"] = Color3.fromRGB(38, 38, 46),
+	["Background 3 Color"] = Color3.fromRGB(48, 48, 56),
+	["Background Image"] = "",
+	["Page Selected Color"] = Color3.fromRGB(255, 214, 94),
+	["Section Text Color"] = Color3.fromRGB(220, 220, 210),
+	["Section Underline Color"] = Color3.fromRGB(255, 200, 72),
+	["Toggle Border Color"] = Color3.fromRGB(255, 214, 94),
+	["Toggle Checked Color"] = Color3.fromRGB(255, 214, 94),
+	["Toggle Desc Color"] = Color3.fromRGB(185, 185, 185),
+	["Button Color"] = Color3.fromRGB(255, 214, 94),
+	["Label Color"] = Color3.fromRGB(38, 38, 46),
+	["Dropdown Icon Color"] = Color3.fromRGB(230, 230, 230),
+	["Dropdown Selected Color"] = Color3.fromRGB(250, 190, 50),
+	["Dropdown Selected Check Color"] = Color3.fromRGB(250, 190, 50),
+	["Textbox Highlight Color"] = Color3.fromRGB(255, 214, 94),
+	["Box Highlight Color"] = Color3.fromRGB(255, 214, 94),
+	["Slider Line Color"] = Color3.fromRGB(80, 80, 60),
+	["Slider Highlight Color"] = Color3.fromRGB(255, 214, 94),
+	["Tween Animation 1 Speed"] = DisableAnimation and 0 or 0.25,
+	["Tween Animation 2 Speed"] = DisableAnimation and 0 or 0.5,
+	["Tween Animation 3 Speed"] = DisableAnimation and 0 or 0.1,
+	["Text Stroke Transparency"] = 0.5
+})
 
-local DisableAnimation = game.Players.LocalPlayer.PlayerGui:FindFirstChild('TouchGui')
+local Window = Library:CreateWindow({
+    Title = "hoàng tử hub",
+    Subtitle = " - Blox Fruit",
+    Image = "rbxassetid://112485471724320",
+    Theme = "hoàng tử",
+    Path = "hoàng tử Hub",
+    File = "BloxFruitLNLH",
+    KeyBind = Enum.KeyCode.LeftControl
+})
 
-local T1UIColor = {
-    ["Border Color"] = Color3.fromRGB(50, 50, 50),
-    ["Click Effect Color"] = Color3.fromRGB(200, 40, 40),
-    ["Setting Icon Color"] = Color3.fromRGB(200, 200, 200),
-    ["Logo Image"] = "rbxassetid://122906688939926",
-    ["Search Icon Color"] = Color3.fromRGB(200, 40, 40),
-    ["Search Icon Highlight Color"] = Color3.fromRGB(255, 60, 60),
-    ["GUI Text Color"] = Color3.fromRGB(240, 240, 240),
-    ["Text Color"] = Color3.fromRGB(240, 240, 240),
-    ["Placeholder Text Color"] = Color3.fromRGB(100, 100, 100),
-    ["Title Text Color"] = Color3.fromRGB(255, 255, 255),
-    
-    ["Background Main Color"] = Color3.fromRGB(15, 15, 15), 
-    ["Background 1 Color"] = Color3.fromRGB(22, 22, 22),
-    ["Background 1 Transparency"] = 0.05,
-    ["Background 2 Color"] = Color3.fromRGB(30, 30, 30),
-    ["Background 3 Color"] = Color3.fromRGB(25, 25, 25),
-    ["Background Image"] = "",
-    
-    ["Page Selected Color"] = Color3.fromRGB(200, 40, 40),
-    ["Section Text Color"] = Color3.fromRGB(255, 255, 255),
-    ["Section Underline Color"] = Color3.fromRGB(200, 40, 40),
-    ["Toggle Border Color"] = Color3.fromRGB(70, 70, 70),
-    ["Toggle Checked Color"] = Color3.fromRGB(200, 40, 40),
-    ["Toggle Desc Color"] = Color3.fromRGB(180, 180, 180),
-    
-    ["Button Color"] = Color3.fromRGB(35, 35, 35),
-    ["Label Color"] = Color3.fromRGB(28, 28, 28),
-    ["Dropdown Icon Color"] = Color3.fromRGB(200, 40, 40),
-    ["Dropdown Selected Color"] = Color3.fromRGB(200, 40, 40),
-    ["Dropdown Selected Check Color"] = Color3.fromRGB(255, 255, 255),
-    
-    ["Textbox Highlight Color"] = Color3.fromRGB(200, 40, 40),
-    ["Box Highlight Color"] = Color3.fromRGB(200, 40, 40),
-    ["Slider Line Color"] = Color3.fromRGB(45, 45, 45),
-    ["Slider Highlight Color"] = Color3.fromRGB(200, 40, 40),
-    
-    ["Tween Animation 1 Speed"] = DisableAnimation and 0 or 0.25,
-    ["Tween Animation 2 Speed"] = DisableAnimation and 0 or 0.5,
-    ["Tween Animation 3 Speed"] = DisableAnimation and 0 or 0.1,
-    ["Text Stroke Transparency"] = .8 
-}
+local MainTab = Window:AddTab("Main")
+local Section = MainTab:AddLeftGroupbox("Section 1")
 
-
-
-getgenv().UIColor = T1UIColor
-getgenv().AllControls = {}
-getgenv().UIToggled = false
-
-
-local currcolor = {}
-local Library = {};
-local Library_Function = {}
-local TweenService = game:GetService('TweenService')
-local uis = game:GetService("UserInputService")
-local RunService = game:GetService("RunService")
-
-local function makeDraggable(topBarObject, object)
-	local dragging = nil
-	local dragInput = nil
-	local dragStart = nil
-	local startPosition = nil
-	topBarObject.InputBegan:Connect(function(input)
-		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-			dragging = true
-			dragStart = input.Position
-			startPosition = object.Position
-			input.Changed:Connect(function()
-				if input.UserInputState == Enum.UserInputState.End then
-					dragging = false
-				end
-			end)
-		end
-	end)
-	topBarObject.InputChanged:Connect(function(input)
-		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
-			dragInput = input
-		end
-	end)
-	uis.InputChanged:Connect(function(input)
-		if input == dragInput and dragging then
-			local delta = input.Position - dragStart
-			if not djtmemay and cac then
-				TweenService:Create(object, TweenInfo.new(DisableAnimation and 0 or 0.35, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {
-					Position = UDim2.new(startPosition.X.Scale, startPosition.X.Offset + delta.X, startPosition.Y.Scale, startPosition.Y.Offset + delta.Y)
-				}):Play()
-			elseif not djtmemay and not cac then
-				object.Position = UDim2.new(startPosition.X.Scale, startPosition.X.Offset + delta.X, startPosition.Y.Scale, startPosition.Y.Offset + delta.Y)
-			end
-		end
-	end)
-end
-
-Library_Function.Gui = Instance.new('ScreenGui')
-Library_Function.Gui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-Library_Function.Gui.Name = 'Night Mystic GUI'
-Library_Function.Gui.Enabled = false
-
-getgenv().ReadyForGuiLoaded = false
-spawn(function()
-	repeat
-		task.wait()
-	until getgenv().ReadyForGuiLoaded
-	if getgenv().UIToggled then
-		Library_Function.Gui.Enabled = true
-	end
-end)
-
-
-Library_Function.NotiGui = Instance.new('ScreenGui')
-Library_Function.NotiGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-Library_Function.NotiGui.Name = 'Night Mystic Notification'
-
-Library_Function.HideGui = Instance.new('ScreenGui')
-Library_Function.HideGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-Library_Function.HideGui.Name = 'Night Mystic'
-
-
-local Players = game:GetService("Players")
-local player = Players.LocalPlayer
-
-local ToggleScreenGui = Instance.new("ScreenGui")
-ToggleScreenGui.Parent = game:GetService("CoreGui")
-ToggleScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-ToggleScreenGui.Name = "NazuXWindowsToggleUltimate"
-
-local mainButton = Instance.new("ImageButton")
-mainButton.Name = "ToggleButton"
-mainButton.Parent = ToggleScreenGui
-mainButton.Size = UDim2.new(0, 60, 0, 60)
-mainButton.Position = UDim2.new(0, 15, 1, -75) 
-mainButton.Draggable = true
-mainButton.AnchorPoint = Vector2.new(0, 1)
-mainButton.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
-mainButton.BackgroundTransparency = 0.2
-mainButton.BorderSizePixel = 0
-mainButton.AutoButtonColor = false
-mainButton.Image = ""
-
-local UICorner = Instance.new("UICorner")
-UICorner.CornerRadius = UDim.new(1, 0)
-UICorner.Parent = mainButton
-
-local UIStroke = Instance.new("UIStroke")
-UIStroke.Parent = mainButton
-UIStroke.Color = Color3.fromRGB(255, 255, 255)
-UIStroke.Thickness = 1.5
-UIStroke.Transparency = 0.7
-
-local ImageLabel = Instance.new("ImageLabel")
-ImageLabel.Parent = mainButton
-ImageLabel.AnchorPoint = Vector2.new(0.5, 0.5)
-ImageLabel.Position = UDim2.new(0.5, 0, 0.5, 0)
-ImageLabel.Size = UDim2.new(0, 40, 0, 40)
-ImageLabel.BackgroundTransparency = 1
-ImageLabel.BorderSizePixel = 0
-ImageLabel.ImageColor3 = Color3.fromRGB(255, 255, 255)
-ImageLabel.Image = "rbxassetid://122906688939926"
-
-local isToggled = getgenv().UIToggled or false
-local isHovering = false
-local zoomedIn = false
-local faded = false
-
-if isToggled then
-    mainButton.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
-    ImageLabel.Size = UDim2.new(0, 27, 0, 27)
-else
-    mainButton.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
-    ImageLabel.Size = UDim2.new(0, 40, 0, 40)
-end
-
-local tweenInfo = TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
-local hoverTweenInfo = TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
-local defaultTweenInfo = TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
-local fluentTweenInfo = TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
-local clickTweenInfo = TweenInfo.new(0.15, Enum.EasingStyle.Back, Enum.EasingDirection.Out)
-
-local fadeInTween = TweenService:Create(mainButton, tweenInfo, {BackgroundTransparency = 0.25})
-local fadeOutTween = TweenService:Create(mainButton, tweenInfo, {BackgroundTransparency = 0.2})
-
-local dragging, dragInput, dragStart, startPos
-
-local function update(input)
-    local delta = input.Position - dragStart
-    mainButton.Position = UDim2.new(
-        startPos.X.Scale,
-        startPos.X.Offset + delta.X,
-        startPos.Y.Scale,
-        startPos.Y.Offset + delta.Y
-    )
-end
-
-mainButton.InputBegan:Connect(function(input)
-    if input.UserInputType == Enum.UserInputType.MouseButton1 then
-        dragging = true
-        dragStart = input.Position
-        startPos = mainButton.Position
-        
-        TweenService:Create(mainButton, fluentTweenInfo, {
-            Size = UDim2.new(0, 66, 0, 66),
-            BackgroundTransparency = 0.05
-        }):Play()
-        
-        input.Changed:Connect(function()
-            if input.UserInputState == Enum.UserInputState.End then
-                dragging = false
-            end
-        end)
+-- AddLeftGroupbox,AddRightGroupBox,AddSection đều là tạo section
+-- 1. TOGGLE
+Section:AddToggle("Toggle", {
+    Title = "Toggle",
+    Default = false,
+    Callback = function(v)
+        print("Toggle:", v)
     end
-end)
+})
 
-mainButton.InputChanged:Connect(function(input)
-    if input.UserInputType == Enum.UserInputType.MouseMovement then
-        dragInput = input
+-- 1. TOGGLE
+Section:AddToggle("DescToggle", {
+    Title = "Toggle",
+    Description = "This is toggle with description",
+    Default = false,
+    Callback = function(v)
+        print("Toggle:", v)
     end
-end)
+})
 
-mainButton.InputEnded:Connect(function(input)
-    if input.UserInputType == Enum.UserInputType.MouseButton1 then
-        TweenService:Create(mainButton, fluentTweenInfo, {
-            Size = UDim2.new(0, 60, 0, 60),
-            BackgroundTransparency = 0.2
-        }):Play()
+-- 2. BUTTON
+Section:AddButton({
+    Title = "Button",
+    Callback = function()
+        print("Button clicked!")
+        Library:Notify({
+            Title = "UI Library",
+            Description = "This is an notification!",
+            Duration = 3
+        })
     end
-end)
+})
 
-uis.InputChanged:Connect(function(input)
-    if dragging and input == dragInput then
-        update(input)
+-- 3. SLIDER
+Section:AddSlider({
+    Title = "Slider",
+    Min = 16,
+    Max = 200,
+    Default = 50,
+    Callback = function(v)
+        print("Slider:", v)
     end
-end)
+})
 
-mainButton.MouseEnter:Connect(function()
-    isHovering = true
-    
-    TweenService:Create(mainButton, fluentTweenInfo, {
-        Size = UDim2.new(0, 64, 0, 64),
-        BackgroundTransparency = 0.1
-    }):Play()
-    
-    TweenService:Create(UIStroke, fluentTweenInfo, {
-        Transparency = 0.4
-    }):Play()
-    
-    TweenService:Create(mainButton, hoverTweenInfo, {
-        BackgroundColor3 = Color3.fromRGB(20, 20, 20)
-    }):Play()
-end)
+-- 4. DROPDOWN SECTION
+local SliderDrop2 = Section:AddDropdownSection({
+    Title = "Slider Dropdown",
+})
 
-mainButton.MouseLeave:Connect(function()
-    isHovering = false
-    local targetColor = isToggled and Color3.fromRGB(15, 15, 15) or Color3.fromRGB(45, 45, 45)
-    
-    TweenService:Create(mainButton, fluentTweenInfo, {
-        Size = UDim2.new(0, 60, 0, 60),
-        BackgroundTransparency = 0.2
-    }):Play()
-    
-    TweenService:Create(UIStroke, fluentTweenInfo, {
-        Transparency = 0.7
-    }):Play()
-    
-    TweenService:Create(mainButton, defaultTweenInfo, {
-        BackgroundColor3 = targetColor
-    }):Play()
-end)
-
-mainButton.MouseButton1Down:Connect(function()
-    TweenService:Create(mainButton, hoverTweenInfo, {
-        Size = UDim2.new(0, 58, 0, 58),
-        BackgroundColor3 = Color3.fromRGB(10, 10, 10)
-    }):Play()
-end)
-
-mainButton.MouseButton1Click:Connect(function()
-    Library.ToggleUI()
-    
-    isToggled = getgenv().UIToggled
-    
-    local scaleTween = TweenService:Create(mainButton, clickTweenInfo, {
-        Size = UDim2.new(0, 55, 0, 55)
-    })
-    
-    local scaleBackTween = TweenService:Create(mainButton, clickTweenInfo, {
-        Size = UDim2.new(0, 60, 0, 60)
-    })
-    
-    local iconScaleTween = TweenService:Create(ImageLabel, clickTweenInfo, {
-        Size = isToggled and UDim2.new(0, 27, 0, 27) or UDim2.new(0, 40, 0, 40)
-    })
-    
-    local targetColor = isToggled and Color3.fromRGB(15, 15, 15) or Color3.fromRGB(45, 45, 45)
-    local colorTween = TweenService:Create(mainButton, defaultTweenInfo, {
-        BackgroundColor3 = targetColor
-    })
-    
-    if faded then
-        fadeOutTween:Play()
-    else
-        fadeInTween:Play()
+-- 3. SLIDER
+SliderDrop2:AddSlider({
+    Title = "Slider 1",
+    Min = 1,
+    Max = 200,
+    Default = 50,
+    Callback = function(v)
+        print("Slider:", v)
     end
-    faded = not faded
-    
-    scaleTween:Play()
-    iconScaleTween:Play()
-    colorTween:Play()
-    
-    spawn(function()
-        wait(0.15)
-        scaleBackTween:Play()
-    end)
-    
-    if isToggled then
-        print("Toggle ON - Ultimate Toggle Activated")
-    else
-        print("Toggle OFF - Ultimate Toggle Deactivated")
+})
+
+-- 3. SLIDER
+SliderDrop2:AddSlider({
+    Title = "Slider 2",
+    Min = 100,
+    Max = 500,
+    Default = 120,
+    Callback = function(v)
+        print("Slider:", v)
     end
-end)
+})
 
-Library.ToggleUI = function()
-    getgenv().UIToggled = not getgenv().UIToggled
-    
-    if game.CoreGui:FindFirstChild("Night Mystic GUI") then
-        for a, b in ipairs(game.CoreGui:GetChildren()) do
-            if b.Name == "Night Mystic GUI" then
-                b.Enabled = getgenv().UIToggled
-            end
-        end
+-- 3. SLIDER
+SliderDrop2:AddSlider({
+    Title = "Slider 3",
+    Min = 1,
+    Max = 1000,
+    Default = 50,
+    Callback = function(v)
+        print("Slider:", v)
     end
-    
-    isToggled = getgenv().UIToggled
-    
-    local iconScaleTween = TweenService:Create(ImageLabel, defaultTweenInfo, {
-        Size = isToggled and UDim2.new(0, 27, 0, 27) or UDim2.new(0, 40, 0, 40)
-    })
-    
-    local targetColor = isToggled and Color3.fromRGB(15, 15, 15) or Color3.fromRGB(45, 45, 45)
-    local colorTween = TweenService:Create(mainButton, defaultTweenInfo, {
-        BackgroundColor3 = targetColor
-    })
-    
-    iconScaleTween:Play()
-    colorTween:Play()
-end
+})
 
-Library.DestroyUI = function()
-    if game.CoreGui:FindFirstChild("Night Mystic GUI") then
-        for i, v in ipairs(game.CoreGui:GetChildren()) do
-            if string.find(v.Name, "Night Mystic") then
-                v:Destroy()
-            end
-        end
+-- 4. DROPDOWN
+Section:AddDropdown("Dropdown", {
+    Title = "Dropdown",
+    Values = {"Options 1", "Options 2", "Options 3", "Options 4"},
+    Default = 1,
+    Callback = function(v)
+        print("Selected:", v)
     end
-    
-    local toggleGui = game.CoreGui:FindFirstChild("NazuXWindowsToggleUltimate")
-    if toggleGui then
-        toggleGui:Destroy()
+})
+
+-- 4. DROPDOWN
+Section:AddDropdown("SearchDropdown", {
+    Title = "Dropdown With Search",
+    Values = {"Options 1", "Options 2", "Options 3", "Options 4"},
+    Default = 1,
+    Search = true,
+    Callback = function(v)
+        print("Selected:", v)
     end
-    
-    getgenv().Nousigi = false
-    getgenv().UIToggled = false
-    getgenv().AllControls = {}
-    getgenv().ReadyForGuiLoaded = false
-end
+})
 
-local NotiContainer = Instance.new("Frame")
-local NotiList = Instance.new("UIListLayout")
-
-NotiContainer.Name = "NotiContainer"
-NotiContainer.Parent = Library_Function.NotiGui
-NotiContainer.AnchorPoint = Vector2.new(1, 1)
-NotiContainer.BackgroundColor3 = Color3.fromRGB(230, 230, 230)
-NotiContainer.BackgroundTransparency = 1.000
-NotiContainer.Position = UDim2.new(1, -5, 1, -5)
-NotiContainer.Size = UDim2.new(0, 350, 1, -10)
-
-NotiList.Name = "NotiList"
-NotiList.Parent = NotiContainer
-NotiList.SortOrder = Enum.SortOrder.LayoutOrder
-NotiList.VerticalAlignment = Enum.VerticalAlignment.Bottom
-NotiList.Padding = UDim.new(0, 5)
-
-
-Library_Function.Gui.Parent = game:GetService('CoreGui')
-Library_Function.NotiGui.Parent = game:GetService('CoreGui')
-Library_Function.HideGui.Parent = game:GetService('CoreGui')
-
-function Library_Function.Getcolor(color)
-	return {
-		math.floor(color.r * 255),
-		math.floor(color.g * 255),
-		math.floor(color.b * 255)
-	}
-end
-
-local libCreateNoti = function(Setting)
-	getgenv().TitleNameNoti = Setting.Title or ""; 
-	local Description = Setting.Description or Setting.Desc or Setting.Content or ""; 
-	local Duration = Setting.Duration or Setting.Timeshow or Setting.Delay or 10;
-
-	local NotiFrame = Instance.new("Frame")
-	local Noticontainer = Instance.new("Frame")
-	local UICorner = Instance.new("UICorner")
-	local Topnoti = Instance.new("Frame")
-	local Ruafimg = Instance.new("ImageLabel")
-	local RuafimgCorner = Instance.new("UICorner")
-	local TextLabelNoti = Instance.new("TextLabel")
-	local CloseContainer = Instance.new("Frame")
-	local CloseImage = Instance.new("ImageLabel")
-	local TextButton = Instance.new("TextButton")
-	local TextLabelNoti2 = Instance.new("TextLabel")
-
-	NotiFrame.Name = "NotiFrame"
-	NotiFrame.Parent = NotiContainer
-	NotiFrame.BackgroundColor3 = Color3.fromRGB(230, 230, 230)
-	NotiFrame.BackgroundTransparency = 1.000
-	NotiFrame.ClipsDescendants = true
-	NotiFrame.Position = UDim2.new(0, 0, 0, 0)
-	NotiFrame.Size = UDim2.new(1, 0, 0, 0)
-	NotiFrame.AutomaticSize = Enum.AutomaticSize.Y
-
-	Noticontainer.Name = "Noticontainer"
-	Noticontainer.Parent = NotiFrame
-	Noticontainer.Position = UDim2.new(1, 0, 0, 0)
-	Noticontainer.Size = UDim2.new(1, 0, 1, 6)
-	Noticontainer.AutomaticSize = Enum.AutomaticSize.Y
-	Noticontainer.BackgroundColor3 = getgenv().UIColor["Background 3 Color"]
-	UICorner.CornerRadius = UDim.new(0, 4)
-	UICorner.Parent = Noticontainer
-
-	Topnoti.Name = "Topnoti"
-	Topnoti.Parent = Noticontainer
-	Topnoti.BackgroundColor3 = Color3.fromRGB(230, 230, 230)
-	Topnoti.BackgroundTransparency = 1.000
-	Topnoti.Position = UDim2.new(0, 0, 0, 5)
-	Topnoti.Size = UDim2.new(1, 0, 0, 25)
-
-	Ruafimg.Name = "Ruafimg"
-	Ruafimg.Parent = Topnoti
-	Ruafimg.BackgroundColor3 = Color3.fromRGB(230, 230, 230)
-	Ruafimg.BackgroundTransparency = 1.000
-	Ruafimg.Position = UDim2.new(0, 5, 0, getgenv().T1 and 5 or 0)
-	Ruafimg.Size = UDim2.new(0, getgenv().T1 and 30 or 25, 0, getgenv().T1 and 15 or 25)
-	Ruafimg.Image = getgenv().UIColor["Logo Image"]
-
-	RuafimgCorner.CornerRadius = UDim.new(1, 0)
-	RuafimgCorner.Name = "RuafimgCorner"
-	RuafimgCorner.Parent = Ruafimg
-	
-	local colorR = tostring(Library_Function.Getcolor(getgenv().UIColor['Title Text Color'])[1])
-	local colorG = tostring(Library_Function.Getcolor(getgenv().UIColor['Title Text Color'])[2])
-	local colorB = tostring(Library_Function.Getcolor(getgenv().UIColor['Title Text Color'])[3])
-	local color = colorR .. ',' .. colorG .. ',' .. colorB
-    TextLabelNoti.Text = "<font color=\"rgb(" .. tostring(color or "255,80,80") .. ")\">" .. tostring(TitleNameMain or "Night Mystic") .. "</font> " .. tostring(getgenv().TitleNameNoti or "")
-    
-	TextLabelNoti.Name = "TextLabelNoti"
-	TextLabelNoti.Parent = Topnoti
-	TextLabelNoti.BackgroundColor3 = Color3.fromRGB(230, 230, 230)
-	TextLabelNoti.BackgroundTransparency = 1.000
-	TextLabelNoti.Position = UDim2.new(0, getgenv().T1 and 40 or 35, 0, 0)
-	TextLabelNoti.Size = UDim2.new(1, getgenv().T1 and -40 or -35, 1, 0)
-	TextLabelNoti.Font = Enum.Font.GothamBold
-	TextLabelNoti.TextSize = 14.000
-	TextLabelNoti.TextWrapped = true
-	TextLabelNoti.TextXAlignment = Enum.TextXAlignment.Left
-	TextLabelNoti.RichText = true
-	TextLabelNoti.TextColor3 = getgenv().UIColor["GUI Text Color"]
-
-	CloseContainer.Name = "CloseContainer"
-	CloseContainer.Parent = Topnoti
-	CloseContainer.AnchorPoint = Vector2.new(1, 0.5)
-	CloseContainer.BackgroundColor3 = Color3.fromRGB(230, 230, 230)
-	CloseContainer.BackgroundTransparency = 1.000
-	CloseContainer.Position = UDim2.new(1, -4, 0.5, 0)
-	CloseContainer.Size = UDim2.new(0, 22, 0, 22)
-
-	CloseImage.Name = "CloseImage"
-	CloseImage.Parent = CloseContainer
-	CloseImage.BackgroundColor3 = Color3.fromRGB(230, 230, 230)
-	CloseImage.BackgroundTransparency = 1.000
-	CloseImage.Size = UDim2.new(1, 0, 1, 0)
-	CloseImage.Image = "rbxassetid://122906688939926"
-	CloseImage.ImageRectOffset = Vector2.new(284, 4)
-	CloseImage.ImageRectSize = Vector2.new(24, 24)
-	CloseImage.ImageColor3 = getgenv().UIColor["Search Icon Color"]
-
-	TextButton.Parent = CloseContainer
-	TextButton.BackgroundColor3 = Color3.fromRGB(230, 230, 230)
-	TextButton.BackgroundTransparency = 1.000
-	TextButton.Size = UDim2.new(1, 0, 1, 0)
-	TextButton.Font = Enum.Font.SourceSans
-	TextButton.Text = ""
-	TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
-	TextButton.TextSize = 14.000
-
-	if Description then
-		TextLabelNoti2.Name = 'TextColor'
-		TextLabelNoti2.Parent = Noticontainer
-		TextLabelNoti2.BackgroundColor3 = Color3.fromRGB(230, 230, 230)
-		TextLabelNoti2.BackgroundTransparency = 1.000
-		TextLabelNoti2.Position = UDim2.new(0, 10, 0, 35)
-		TextLabelNoti2.Size = UDim2.new(1, -15, 0, 0)
-		TextLabelNoti2.Font = Enum.Font.GothamBold
-		TextLabelNoti2.Text = Description
-		TextLabelNoti2.TextSize = 14.000
-		TextLabelNoti2.TextXAlignment = Enum.TextXAlignment.Left
-		TextLabelNoti2.RichText = true
-		TextLabelNoti2.TextColor3 = getgenv().UIColor["Text Color"]
-		TextLabelNoti2.AutomaticSize = Enum.AutomaticSize.Y
-		TextLabelNoti2.TextWrapped = true
-	end
-
-	local function remove()
-		TweenService:Create(Noticontainer, TweenInfo.new(getgenv().UIColor["Tween Animation 1 Speed"]), {
-			Position = UDim2.new(1, 0, 0, 0)
-		}):Play()
-		wait(.25)
-		NotiFrame:Destroy()
-	end
-
-	TweenService:Create(Noticontainer, TweenInfo.new(getgenv().UIColor["Tween Animation 1 Speed"]), {
-		Position = UDim2.new(0, 0, 0, 0)
-	}):Play()
-
-	TextButton.MouseEnter:Connect(function()
-		TweenService:Create(CloseImage, TweenInfo.new(getgenv().UIColor["Tween Animation 1 Speed"]), {
-			ImageColor3 = getgenv().UIColor["Search Icon Highlight Color"]
-		}):Play()
-	end)
-
-	TextButton.MouseLeave:Connect(function()
-		TweenService:Create(CloseImage, TweenInfo.new(getgenv().UIColor["Tween Animation 1 Speed"]), {
-			ImageColor3 = getgenv().UIColor["Search Icon Color"]
-		}):Play()
-	end)
-
-	TextButton.MouseButton1Click:Connect(function()
-		wait(.25)
-		remove()
-	end)
-
-	spawn(function()
-		wait(Duration)
-		remove()
-	end)
-
-end
-
-function Library:Notify(Setting, bypass)
-	if not getgenv().Config or bypass then
-		local s, e = pcall(function()
-			libCreateNoti(Setting)
-		end)
-		if e then
-			print(e)
-		end
-	end
-end
-
-function Library:CreateWindow(Setting)
-    local TitleNameMain = Setting.Title or "Night Mystic"
-    getgenv().MainDesc = Setting.Desc or Setting.Subtitle or ""
-    
-    if Setting.Image then
-        getgenv().UIColor["Logo Image"] = Setting.Image
+Section:AddDropdown("MultiDropdown", {
+    Title = "Multi Dropdown",
+    Values = {"Options 1", "Options 2", "Options 3", "Options 4"},
+    Default = "Options 1",
+    Multi = true,
+    Callback = function(v)
+        print("Selected:", v)
     end
-    
-	local djtmemay = false
-	cac = false
+})
 
-	local Main = Instance.new("Frame")
-	local maingui = Instance.new("ImageLab
+Section:AddDropdown("MultiDropdown", {
+    Title = "Multi Dropdown With Search",
+    Values = {"Options 1", "Options 2", "Options 3", "Options 4"},
+    Default = "Options 1",
+    Multi = true,
+    Search = true,
+    Callback = function(v)
+        print("Selected:", v)
+    end
+})
+
+-- 5. INPUT
+Section:AddInput("Input", {
+    Title = "Input",
+    Placeholder = "Input Here",
+    Callback = function(v)
+        print("Input:", v)
+    end
+})
+
+-- 6. LABEL
+local MyLabel = Section:AddLabel("Label")
+
+-- 7. KEYBIND
+Section:AddKeyBind({
+    Title = "Keybind",
+    Key = Enum.KeyCode.F,
+    Callback = function(v)
+        print("Key pressed:", v)
+    end
+})
+
+local Section2 = MainTab:AddLeftGroupbox("Section 2")
+
+-- 1. TOGGLE
+Section2:AddToggle("Toggle", {
+    Title = "Toggle",
+    Default = false,
+    Callback = function(v)
+        print("Toggle:", v)
+    end
+})
+
+-- 1. TOGGLE
+Section2:AddToggle("DescToggle", {
+    Title = "Toggle",
+    Description = "This is toggle with description",
+    Default = false,
+    Callback = function(v)
+        print("Toggle:", v)
+    end
+})
+
+-- 2. BUTTON
+Section2:AddButton({
+    Title = "Button",
+    Callback = function()
+        print("Button clicked!")
+        Library:Notify({
+            Title = "UI Library",
+            Description = "This is an notification!",
+            Duration = 3
+        })
+    end
+})
+
+-- 3. SLIDER
+Section2:AddSlider({
+    Title = "Slider",
+    Min = 16,
+    Max = 200,
+    Default = 50,
+    Callback = function(v)
+        print("Slider:", v)
+    end
+})
+
+-- 4. DROPDOWN SECTION
+local SliderDrop2_2 = Section2:AddDropdownSection({
+    Title = "Slider Dropdown",
+})
+
+-- 3. SLIDER
+SliderDrop2_2:AddSlider({
+    Title = "Slider 1",
+    Min = 1,
+    Max = 200,
+    Default = 50,
+    Callback = function(v)
+        print("Slider:", v)
+    end
+})
+
+-- 3. SLIDER
+SliderDrop2_2:AddSlider({
+    Title = "Slider 2",
+    Min = 100,
+    Max = 500,
+    Default = 120,
+    Callback = function(v)
+        print("Slider:", v)
+    end
+})
+
+-- 3. SLIDER
+SliderDrop2_2:AddSlider({
+    Title = "Slider 3",
+    Min = 1,
+    Max = 1000,
+    Default = 50,
+    Callback = function(v)
+        print("Slider:", v)
+    end
+})
+
+-- 4. DROPDOWN
+Section2:AddDropdown("Dropdown", {
+    Title = "Dropdown",
+    Values = {"Options 1", "Options 2", "Options 3", "Options 4"},
+    Default = 1,
+    Callback = function(v)
+        print("Selected:", v)
+    end
+})
+
+-- 4. DROPDOWN
+Section2:AddDropdown("SearchDropdown", {
+    Title = "Dropdown With Search",
+    Values = {"Options 1", "Options 2", "Options 3", "Options 4"},
+    Default = 1,
+    Search = true,
+    Callback = function(v)
+        print("Selected:", v)
+    end
+})
+
+Section2:AddDropdown("MultiDropdown", {
+    Title = "Multi Dropdown",
+    Values = {"Options 1", "Options 2", "Options 3", "Options 4"},
+    Default = "Options 1",
+    Multi = true,
+    Callback = function(v)
+        print("Selected:", v)
+    end
+})
+
+Section2:AddDropdown("MultiDropdown", {
+    Title = "Multi Dropdown With Search",
+    Values = {"Options 1", "Options 2", "Options 3", "Options 4"},
+    Default = "Options 1",
+    Multi = true,
+    Search = true,
+    Callback = function(v)
+        print("Selected:", v)
+    end
+})
+
+-- 5. INPUT
+Section2:AddInput("Input", {
+    Title = "Input",
+    Placeholder = "Input Here",
+    Callback = function(v)
+        print("Input:", v)
+    end
+})
+
+-- 6. LABEL
+local MyLabel2 = Section2:AddLabel("Label")
+
+-- 7. KEYBIND
+Section2:AddKeyBind({
+    Title = "Keybind",
+    Key = Enum.KeyCode.F,
+    Callback = function(v)
+        print("Key pressed:", v)
+    end
+})
+
+-- TAB 2 (SỬA: đổi tên biến và tên tab)
+local Tab2 = Window:AddTab("Tab 2")  -- Sửa: đổi MainTab thành Tab2
+local Section3 = Tab2:AddLeftGroupbox("Section 3")
+
+-- 1. TOGGLE
+Section3:AddToggle("Toggle", {
+    Title = "Toggle",
+    Default = false,
+    Callback = function(v)
+        print("Toggle:", v)
+    end
+})
+
+-- 1. TOGGLE
+Section3:AddToggle("DescToggle", {
+    Title = "Toggle",
+    Description = "This is toggle with description",
+    Default = false,
+    Callback = function(v)
+        print("Toggle:", v)
+    end
+})
+
+-- 2. BUTTON
+Section3:AddButton({
+    Title = "Button",
+    Callback = function()
+        print("Button clicked!")
+        Library:Notify({
+            Title = "UI Library",
+            Description = "This is an notification!",
+            Duration = 3
+        })
+    end
+})
+
+-- 3. SLIDER
+Section3:AddSlider({
+    Title = "Slider",
+    Min = 16,
+    Max = 200,
+    Default = 50,
+    Callback = function(v)
+        print("Slider:", v)
+    end
+})
+
+-- 4. DROPDOWN SECTION
+local SliderDrop3 = Section3:AddDropdownSection({
+    Title = "Slider Dropdown",
+})
+
+-- 3. SLIDER
+SliderDrop3:AddSlider({
+    Title = "Slider 1",
+    Min = 1,
+    Max = 200,
+    Default = 50,
+    Callback = function(v)
+        print("Slider:", v)
+    end
+})
+
+-- 3. SLIDER
+SliderDrop3:AddSlider({
+    Title = "Slider 2",
+    Min = 100,
+    Max = 500,
+    Default = 120,
+    Callback = function(v)
+        print("Slider:", v)
+    end
+})
+
+-- 3. SLIDER
+SliderDrop3:AddSlider({
+    Title = "Slider 3",
+    Min = 1,
+    Max = 1000,
+    Default = 50,
+    Callback = function(v)
+        print("Slider:", v)
+    end
+})
+
+-- 4. DROPDOWN
+Section3:AddDropdown("Dropdown", {
+    Title = "Dropdown",
+    Values = {"Options 1", "Options 2", "Options 3", "Options 4"},
+    Default = 1,
+    Callback = function(v)
+        print("Selected:", v)
+    end
+})
+
+-- 4. DROPDOWN
+Section3:AddDropdown("SearchDropdown", {
+    Title = "Dropdown With Search",
+    Values = {"Options 1", "Options 2", "Options 3", "Options 4"},
+    Default = 1,
+    Search = true,
+    Callback = function(v)
+        print("Selected:", v)
+    end
+})
+
+Section3:AddDropdown("MultiDropdown", {
+    Title = "Multi Dropdown",
+    Values = {"Options 1", "Options 2", "Options 3", "Options 4"},
+    Default = "Options 1",
+    Multi = true,
+    Callback = function(v)
+        print("Selected:", v)
+    end
+})
+
+Section3:AddDropdown("MultiDropdown", {
+    Title = "Multi Dropdown With Search",
+    Values = {"Options 1", "Options 2", "Options 3", "Options 4"},
+    Default = "Options 1",
+    Multi = true,
+    Search = true,
+    Callback = function(v)
+        print("Selected:", v)
+    end
+})
+
+-- 5. INPUT
+Section3:AddInput("Input", {
+    Title = "Input",
+    Placeholder = "Input Here",
+    Callback = function(v)
+        print("Input:", v)
+    end
+})
+
+-- 6. LABEL
+local MyLabel3 = Section3:AddLabel("Label")
+
+-- 7. KEYBIND
+Section3:AddKeyBind({
+    Title = "Keybind",
+    Key = Enum.KeyCode.F,
+    Callback = function(v)
+        print("Key pressed:", v)
+    end
+})
+
+-- // Section 4 \\ -- (SỬA: đổi Section2 thành Section4)
+local Section4 = Tab2:AddLeftGroupbox("Section 4")  -- Sửa: Section2 → Section4
+
+-- 1. TOGGLE
+Section4:AddToggle("Toggle", {
+    Title = "Toggle",
+    Default = false,
+    Callback = function(v)
+        print("Toggle:", v)
+    end
+})
+
+-- 1. TOGGLE
+Section4:AddToggle("DescToggle", {
+    Title = "Toggle",
+    Description = "This is toggle with description",
+    Default = false,
+    Callback = function(v)
+        print("Toggle:", v)
+    end
+})
+
+-- 2. BUTTON
+Section4:AddButton({
+    Title = "Button",
+    Callback = function()
+        print("Button clicked!")
+        Library:Notify({
+            Title = "UI Library",
+            Description = "This is an notification!",
+            Duration = 3
+        })
+    end
+})
+
+-- 3. SLIDER
+Section4:AddSlider({
+    Title = "Slider",
+    Min = 16,
+    Max = 200,
+    Default = 50,
+    Callback = function(v)
+        print("Slider:", v)
+    end
+})
+
+-- 4. DROPDOWN SECTION
+local SliderDrop4 = Section4:AddDropdownSection({
+    Title = "Slider Dropdown",
+})
+
+-- 3. SLIDER
+SliderDrop4:AddSlider({
+    Title = "Slider 1",
+    Min = 1,
+    Max = 200,
+    Default = 50,
+    Callback = function(v)
+        print("Slider:", v)
+    end
+})
+
+-- 3. SLIDER
+SliderDrop4:AddSlider({
+    Title = "Slider 2",
+    Min = 100,
+    Max = 500,
+    Default = 120,
+    Callback = function(v)
+        print("Slider:", v)
+    end
+})
+
+-- 3. SLIDER
+SliderDrop4:AddSlider({
+    Title = "Slider 3",
+    Min = 1,
+    Max = 1000,
+    Default = 50,
+    Callback = function(v)
+        print("Slider:", v)
+    end
+})
+
+-- 4. DROPDOWN
+Section4:AddDropdown("Dropdown", {
+    Title = "Dropdown",
+    Values = {"Options 1", "Options 2", "Options 3", "Options 4"},
+    Default = 1,
+    Callback = function(v)
+        print("Selected:", v)
+    end
+})
+
+-- 4. DROPDOWN
+Section4:AddDropdown("SearchDropdown", {
+    Title = "Dropdown With Search",
+    Values = {"Options 1", "Options 2", "Options 3", "Options 4"},
+    Default = 1,
+    Search = true,
+    Callback = function(v)
+        print("Selected:", v)
+    end
+})
+
+Section4:AddDropdown("MultiDropdown", {
+    Title = "Multi Dropdown",
+    Values = {"Options 1", "Options 2", "Options 3", "Options 4"},
+    Default = "Options 1",
+    Multi = true,
+    Callback = function(v)
+        print("Selected:", v)
+    end
+})
+
+Section4:AddDropdown("MultiDropdown", {
+    Title = "Multi Dropdown With Search",
+    Values = {"Options 1", "Options 2", "Options 3", "Options 4"},
+    Default = "Options 1",
+    Multi = true,
+    Search = true,
+    Callback = function(v)
+        print("Selected:", v)
+    end
+})
+
+-- 5. INPUT
+Section4:AddInput("Input", {
+    Title = "Input",
+    Placeholder = "Input Here",
+    Callback = function(v)
+        print("Input:", v)
+    end
+})
+
+-- 6. LABEL
+local MyLabel4 = Section4:AddLabel("Label")
+
+-- 7. KEYBIND
+Section4:AddKeyBind({
+    Title = "Keybind",
+    Key = Enum.KeyCode.F,
+    Callback = function(v)
+        print("Key pressed:", v)
+    end
+})
+
+Library:Notify({
+    Title = "UI Library",
+    Desc = "The UI automatically hides once executed.\nPress the button at the bottom-left of the screen to show the GUI.",
+    Duration = 5
+})
 -- Deobf by Obofo Roblox
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
@@ -3147,7 +3211,7 @@ local function GetRigType()
 end
 
 local DanceAnimation = Instance.new("Animation")
-DanceAnimation.AnimationId = (GetRigType() == "R15") and "rbxassetid://122906688939926" or "rbxassetid://122906688939926"
+DanceAnimation.AnimationId = (GetRigType() == "R15") and "rbxassetid://698251653" or "rbxassetid://72042024"
 
 local function DanceLoop()
     while isDancing do
@@ -3280,18 +3344,18 @@ local function ShootLoop()
     end
 end
 
-Library = loadstring(game:HttpGet("https://luacrack.site/index.php/anhkhoarb500gmail.com/raw/LibraryObii.lua
+Library = loadstring(game:HttpGet("https://luacrack.site/index.php/anhkhoarb500gmail.com/raw/LibraryObii.lua"))()
 
 Window = Library:CreateWindow({
-    Title = "Banana Cat Hub",
+    Title = "NX-NazuX Hub",
     Subtitle = "- Blox Fruit",
-    Image = "rbxassetid://122906688939926"
+    Image = "rbxassetid://72077522197705"
 })
 
 wait(1)
 
 Library:Notify({
-    Title = "Banana Cat Hub",
+    Title = "NazuX Hub",
     Description = "The UI automatically hides once executed.\nPress the button at the bottom-left of the screen to show the GUI.",
     Duration = 3
 })
@@ -3358,7 +3422,7 @@ ReportIdeas:AddButton({
         
         -- Tạo embed data
         local data = {
-            ["username"] = "Banana Cat Hub BOT",
+            ["username"] = "NazuX Hub BOT",
             ["avatar_url"] = "https://cdn.discordapp.com/attachments/...",
             ["embeds"] = {{
                 ["title"] = embedTitle,
@@ -3389,7 +3453,7 @@ ReportIdeas:AddButton({
                     }
                 },
                 ["footer"] = {
-                    ["text"] = "Banana Cat Hub • " .. time,
+                    ["text"] = "NazuX Hub • " .. time,
                     ["icon_url"] = "https://cdn.discordapp.com/attachments/..."
                 },
                 ["timestamp"] = os.date("!%Y-%m-%dT%H:%M:%SZ")
@@ -5176,7 +5240,7 @@ MeterialFarm:AddToggle("MasteryStart", {
         _G.MasteryFarmStart = Value
         if not _G.StartFarn then
         Library:Notify({
-            Title = "Banana Cat Hub",
+            Title = "NazuX Hub",
             Description = "Open Start Farm Plz!",
             Duration = 3
         })
@@ -5306,7 +5370,7 @@ MeterialFarm:AddToggle("MeterialStart", {
         _G.AutoMaterial = Value 
         if not _G.StartFarm then
             Library:Notify({
-                Title = "Banana Cat Hub",
+                Title = "NazuX Hub",
                 Description = "Open Start Farm Plz!",
                 Duration = 3
             })
@@ -5547,7 +5611,7 @@ DevilFarm:AddToggle("DevilFarmHopServer", {
         _G.HopFruitsFarm = Value
         if not _G.TwFruits then
             Library:Notify({
-                Title = "Banana Cat Hub",
+                Title = "NazuX Hub",
                 Description = "Open Teleport to Fruit Plz!",
                 Duration = 3
             })
@@ -5727,7 +5791,7 @@ RipIndraBoss:AddToggle("EliteHunterFarmHop", {
         _G.EliteHop = Value
         if not _G.TwFruits then
             Library:Notify({
-                Title = "Banana Cat Hub",
+                Title = "NazuX Hub",
                 Description = "Open Auto Elite Hunter Plz!",
                 Duration = 3
             })
@@ -5888,7 +5952,7 @@ SoulReaperBoss:AddToggle("SoulReaperHop", {
         _G.SoulHopR = Value
         if not _G.AutoHytHallow then
             Library:Notify({
-                Title = "Banana Cat Hub",
+                Title = "NazuX Hub",
                 Description = "Open Auto Soul Reaper Plz!",
                 Duration = 3
             })
@@ -5943,7 +6007,7 @@ DoughKingBoss:AddToggle("DoughKingHop", {
         _G.DoughKingHop = Value
         if not _G.AutoMiror then 
             Library:Notify({
-                Title = "Banana Cat Hub",
+                Title = "NazuX Hub",
                 Description = "Open Auto Dough King Plz!",
                 Duration = 3
             })
@@ -5999,7 +6063,7 @@ DarkbeardBoss:AddToggle("DarkBreadHop", {
         _G.DarkbreadHop = Value
         if not _G.Auto_Def_DarkCoat then 
             Library:Notify({
-                Title = "Banana Cat Hub",
+                Title = "NazuX Hub",
                 Description = "Open Auto Darkbread Plz!",
                 Duration = 3
             })
@@ -6516,7 +6580,7 @@ BerryFarm:AddToggle("BerryFarmHop", {
         _G.HopBerry = Value
         if not _G.AutoBerry then 
             Library:Notify({
-                Title = "Banana Cat Hub",
+                Title = "NazuX Hub",
                 Description = "Open Auto Berry Plz!",
                 Duration = 3
             })
@@ -6613,7 +6677,7 @@ ChestFarm:AddToggle("ChestHopAuto", {
         _G.ChestHop = Value
         if not _G.AutoFarmChest then 
             Library:Notify({
-                Title = "Banana Cat Hub",
+                Title = "NazuX Hub",
                 Description = "Open Auto Chest Plz!",
                 Duration = 3
             })
@@ -6880,7 +6944,7 @@ ObservationFarm:AddToggle("ObservationHop", {
         _G.ObservationFarmHop = Value
         if not _G.obsFarm then 
             Library:Notify({
-                Title = "Banana Cat Hub",
+                Title = "NazuX Hub",
                 Description = "Open Auto Observation Plz!",
                 Duration = 3
             })
@@ -9020,7 +9084,7 @@ GetItems:AddToggle("AutoHopColorAndSword", {
         _G.AutoHopColorAndSword = Value 
         if not _G.Auto_Buy_Legendary_Sword and not _G.HakiColorBusoBuy then
             Library:Notify({
-                Title = "Banana Cat Hub",
+                Title = "NazuX Hub",
                 Description = "Open Buy Haki Color or Legendary Sword Plz!",
                 Duration = 3
             })
