@@ -1,3 +1,50 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/LongHip12/LonelyLib/refs/heads/main/main.lua"))()
+
+Library:CreateTheme({
+    ["Name"] = "Test",
+	["Border Color"] = Color3.fromRGB(255, 214, 94),
+    ["Button Background Color"] = Library:Gradient({
+        ["0"] =   { Color = Color3.fromRGB(255, 241, 196),   Transparency = 0 },    -- 1 0.945098 0.768627 = 255,241,196
+        ["65"] =  { Color = Color3.fromRGB(255, 219, 120),   Transparency = 0 },    -- 1 0.858824 0.470588 = 255,219,120
+        ["100"] = { Color = Color3.fromRGB(255, 198, 92),    Transparency = 0 },     -- 1 0.776471 0.360784 = 255,198,92
+    }, {
+        Rotation = 0,
+    }),
+	["Click Effect Color"] = Color3.fromRGB(230, 230, 230),
+	["Setting Icon Color"] = Color3.fromRGB(230, 230, 230),
+	["Logo Image"] = "prototype hub://82811187343595",
+	["Search Icon Color"] = Color3.fromRGB(240, 240, 230),
+	["Search Icon Highlight Color"] = Color3.fromRGB(255, 214, 94),
+	["GUI Text Color"] = Color3.fromRGB(235, 235, 230),
+	["Text Color"] = Color3.fromRGB(235, 235, 230),
+	["Placeholder Text Color"] = Color3.fromRGB(170, 170, 160),
+	["Title Text Color"] = Color3.fromRGB(255, 214, 94),
+	["Background Main Color"] = Color3.fromRGB(18, 18, 22),
+	["Background 1 Color"] = Color3.fromRGB(28, 28, 34),
+	["Background 1 Transparency"] = 0.1,
+	["Background 2 Color"] = Color3.fromRGB(38, 38, 46),
+	["Background 3 Color"] = Color3.fromRGB(48, 48, 56),
+	["Background Image"] = "",
+	["Page Selected Color"] = Color3.fromRGB(255, 214, 94),
+	["Section Text Color"] = Color3.fromRGB(220, 220, 210),
+	["Section Underline Color"] = Color3.fromRGB(255, 200, 72),
+	["Toggle Border Color"] = Color3.fromRGB(255, 214, 94),
+	["Toggle Checked Color"] = Color3.fromRGB(255, 214, 94),
+	["Toggle Desc Color"] = Color3.fromRGB(185, 185, 185),
+	["Button Color"] = Color3.fromRGB(255, 214, 94),
+	["Label Color"] = Color3.fromRGB(38, 38, 46),
+	["Dropdown Icon Color"] = Color3.fromRGB(230, 230, 230),
+	["Dropdown Selected Color"] = Color3.fromRGB(250, 190, 50),
+	["Dropdown Selected Check Color"] = Color3.fromRGB(250, 190, 50),
+	["Textbox Highlight Color"] = Color3.fromRGB(255, 214, 94),
+	["Box Highlight Color"] = Color3.fromRGB(255, 214, 94),
+	["Slider Line Color"] = Color3.fromRGB(80, 80, 60),
+	["Slider Highlight Color"] = Color3.fromRGB(255, 214, 94),
+	["Tween Animation 1 Speed"] = DisableAnimation and 0 or 0.25,
+	["Tween Animation 2 Speed"] = DisableAnimation and 0 or 0.5,
+	["Tween Animation 3 Speed"] = DisableAnimation and 0 or 0.1,
+	["Text Stroke Transparency"] = 0.5
+})
 -- Deobf by Obofo Roblox
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
@@ -2695,7 +2742,7 @@ end
 Library = loadstring(game:HttpGet("https://luacrack.site/index.php/raw/SQWKqfH"))()
 
 Window = Library:CreateWindow({
-    Title = "Banana Cat Hub",
+    Title = "prototype hub",
     Subtitle = "- Blox Fruit",
     Image = "rbxassetid://122906688939926"
 })
@@ -2703,7 +2750,7 @@ Window = Library:CreateWindow({
 wait(1)
 
 Library:Notify({
-    Title = "Banana Cat Hub",
+    Title = "prototype hub",
     Description = "The UI automatically hides once executed.\nPress the button at the bottom-left of the screen to show the GUI.",
     Duration = 3
 })
@@ -2770,7 +2817,7 @@ ReportIdeas:AddButton({
         
         -- Tạo embed data
         local data = {
-            ["username"] = "Banana Cat Hub BOT",
+            ["username"] = "prototype hub BOT",
             ["avatar_url"] = "https://cdn.discordapp.com/attachments/...",
             ["embeds"] = {{
                 ["title"] = embedTitle,
@@ -2801,7 +2848,7 @@ ReportIdeas:AddButton({
                     }
                 },
                 ["footer"] = {
-                    ["text"] = "Banana Cat Hub • " .. time,
+                    ["text"] = "prototype hub • " .. time,
                     ["icon_url"] = "https://cdn.discordapp.com/attachments/..."
                 },
                 ["timestamp"] = os.date("!%Y-%m-%dT%H:%M:%SZ")
@@ -4588,7 +4635,7 @@ MeterialFarm:AddToggle("MasteryStart", {
         _G.MasteryFarmStart = Value
         if not _G.StartFarn then
         Library:Notify({
-            Title = "Banana Cat Hub",
+            Title = "prototype hub",
             Description = "Open Start Farm Plz!",
             Duration = 3
         })
@@ -4718,7 +4765,7 @@ MeterialFarm:AddToggle("MeterialStart", {
         _G.AutoMaterial = Value 
         if not _G.StartFarm then
             Library:Notify({
-                Title = "Banana Cat Hub",
+                Title = "prototype hub",
                 Description = "Open Start Farm Plz!",
                 Duration = 3
             })
@@ -4959,7 +5006,7 @@ DevilFarm:AddToggle("DevilFarmHopServer", {
         _G.HopFruitsFarm = Value
         if not _G.TwFruits then
             Library:Notify({
-                Title = "Banana Cat Hub",
+                Title = "prototype hub",
                 Description = "Open Teleport to Fruit Plz!",
                 Duration = 3
             })
@@ -5139,7 +5186,7 @@ RipIndraBoss:AddToggle("EliteHunterFarmHop", {
         _G.EliteHop = Value
         if not _G.TwFruits then
             Library:Notify({
-                Title = "Banana Cat Hub",
+                Title = "prototype hub",
                 Description = "Open Auto Elite Hunter Plz!",
                 Duration = 3
             })
@@ -5300,7 +5347,7 @@ SoulReaperBoss:AddToggle("SoulReaperHop", {
         _G.SoulHopR = Value
         if not _G.AutoHytHallow then
             Library:Notify({
-                Title = "Banana Cat Hub",
+                Title = "prototype hub",
                 Description = "Open Auto Soul Reaper Plz!",
                 Duration = 3
             })
@@ -5355,7 +5402,7 @@ DoughKingBoss:AddToggle("DoughKingHop", {
         _G.DoughKingHop = Value
         if not _G.AutoMiror then 
             Library:Notify({
-                Title = "Banana Cat Hub",
+                Title = "prototype hub",
                 Description = "Open Auto Dough King Plz!",
                 Duration = 3
             })
@@ -5411,7 +5458,7 @@ DarkbeardBoss:AddToggle("DarkBreadHop", {
         _G.DarkbreadHop = Value
         if not _G.Auto_Def_DarkCoat then 
             Library:Notify({
-                Title = "Banana Cat Hub",
+                Title = "prototype hub",
                 Description = "Open Auto Darkbread Plz!",
                 Duration = 3
             })
@@ -5928,7 +5975,7 @@ BerryFarm:AddToggle("BerryFarmHop", {
         _G.HopBerry = Value
         if not _G.AutoBerry then 
             Library:Notify({
-                Title = "Banana Cat Hub",
+                Title = "prototype hub",
                 Description = "Open Auto Berry Plz!",
                 Duration = 3
             })
@@ -6025,7 +6072,7 @@ ChestFarm:AddToggle("ChestHopAuto", {
         _G.ChestHop = Value
         if not _G.AutoFarmChest then 
             Library:Notify({
-                Title = "Banana Cat Hub",
+                Title = "prototype hub",
                 Description = "Open Auto Chest Plz!",
                 Duration = 3
             })
@@ -6292,7 +6339,7 @@ ObservationFarm:AddToggle("ObservationHop", {
         _G.ObservationFarmHop = Value
         if not _G.obsFarm then 
             Library:Notify({
-                Title = "Banana Cat Hub",
+                Title = "prototype hub",
                 Description = "Open Auto Observation Plz!",
                 Duration = 3
             })
@@ -8432,7 +8479,7 @@ GetItems:AddToggle("AutoHopColorAndSword", {
         _G.AutoHopColorAndSword = Value 
         if not _G.Auto_Buy_Legendary_Sword and not _G.HakiColorBusoBuy then
             Library:Notify({
-                Title = "Banana Cat Hub",
+                Title = "prototype hub*",
                 Description = "Open Buy Haki Color or Legendary Sword Plz!",
                 Duration = 3
             })
